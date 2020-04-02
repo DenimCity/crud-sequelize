@@ -1,10 +1,10 @@
 const {
-    PORT = 5000
+  PORT = 5000,
 
-} = process.env
+} = process.env;
 
 
 const CONFIG = {
-    PORT
-}
-module.exports = CONFIG
+  PORT,
+};
+module.exports = CONFIG;

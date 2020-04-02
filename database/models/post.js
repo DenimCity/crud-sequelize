@@ -1,11 +1,11 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Post = sequelize.define('Post', {
     title: DataTypes.STRING,
     content: DataTypes.TEXT,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
   }, {});
-  Post.associate = function (models) {
+  Post.associate = (models) => {
     // associations can be defined here
     Post.hasMany(models.Comment, {
       foreignKey: 'postId',
@@ -17,8 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'author',
       onDelete: 'CASCADE',
-    })
-
+    });
   };
   return Post;
 };
