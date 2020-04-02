@@ -47,5 +47,15 @@
     "hooks": {
       "pre-push": "npm run lint && npm run test"
     }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 30,
+        "functions": 30,
+        "lines": 30,
+        "statements": 30
+      }
+    }
   }
 }
