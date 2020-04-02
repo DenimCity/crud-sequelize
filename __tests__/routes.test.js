@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../server');
 
 describe('Post Endpoints', () => {
-    it('should create a new post', async (done) => {
+    it('should create a new post', async () => {
         const res = await request(app)
             .post('/api/posts')
             .send({
@@ -11,6 +11,5 @@ describe('Post Endpoints', () => {
             })
         expect(res.statusCode).toEqual(201)
         expect(res.body).toHaveProperty('post')
-        done()
     })
 })
