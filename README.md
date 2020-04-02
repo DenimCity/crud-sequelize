@@ -10,7 +10,6 @@ Tasks
 - [x] creating testing environment
 - [x] tests
 - [] add husky pre-commit lint and run tests
-
 - [] replace travis with github actions
 - [] deploy to heroku when a pull request is merged or push to master
 - [] run tests in github actions when branch is pushed
