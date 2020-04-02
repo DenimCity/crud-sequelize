@@ -29,7 +29,15 @@ describe('Post Endpoints', () => {
             })
         expect(res.statusCode).toEqual(500)
         expect(res.body.error).toBe('null value in column "userId" violates not-null constraint')
-
+    })
+    it('should throw error if title is not provided', async () => {
+        const res = await request(app)
+            .post('/api/posts')
+            .send({
+                userId: 1,  
+            })
+        expect(res.statusCode).toEqual(500)
+        expect(res.body.error).toBe('null value in column "title" violates not-null constraint')
     })
 
 })
