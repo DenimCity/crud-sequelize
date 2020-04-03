@@ -11,7 +11,7 @@
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit --coverage",
     "testwatch": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit --watch",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
-    "postinstall": "npm run migrate",
+    "ok": "npm run migrate",
     "coverage": "npm run pretest && jest --coverage --forceExit && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint . --fix"
   },
