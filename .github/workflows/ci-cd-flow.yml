@@ -9,8 +9,11 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Setting Up
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     env:
       NODE_ENV: test
 
