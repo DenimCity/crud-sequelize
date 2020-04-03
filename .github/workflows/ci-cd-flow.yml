@@ -50,7 +50,5 @@ jobs:
           npm run pretest
       - name: Seed Database
         run: |
-          sequelize seed:generate --name User
-          sequelize seed:generate --name Post
-          sequelize seed:generate --name Comment
+          sh .seed-db.sh
         
