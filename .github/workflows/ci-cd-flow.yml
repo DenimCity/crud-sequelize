@@ -8,30 +8,49 @@ on:
       - dev
 
 jobs:
-  test:
-    name: Testing
+  ci:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
+    container: 
+      image: node:12
+    services:
+      postgres:
+        image: postgres:12-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: jy95
+          POSTGRES_DB: sourcecode
     env:
-      NODE_ENV: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: jy95
+      POSTGRES_DB: sourcecode
+      POSTGRES_HOST: postgres
 
     steps:
     - uses: actions/checkout@v1
-
-    - uses: actions/setup-node@v1.1.0
-    - run: echo "Installing Dependecies"
-    - run: npm install
-    - run: echo "Check Code Styling"
-    - run: npm run lint
+    - name: Set DB Port
+      env:
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        run: |
+          echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
+    - name: Install
+      run: |
+          npm install -g npm@latest
+    - name: Linting
+      run: |
+        npm run lint
+        npm run start-dev
+#     - uses: actions/setup-node@v1.1.0
+#     - run: echo "Installing Dependecies"
+#     - run: npm install
+#     - run: echo "Check Code Styling"
+#     - run: npm run lint
     
-    - name: Setup PostgreSQL
-      uses: Harmon758/postgresql-action@v1.0.0
-      with:
-        postgresql version: 11
-        postgresql db: test_db 
-        postgresql user: default 
-        postgresql password: default
+#     - name: Setup PostgreSQL
+#       uses: Harmon758/postgresql-action@v1.0.0
+#       with:
+#         postgresql version: 11
+#         postgresql db: test_db 
+#         postgresql user: default 
+#         postgresql password: default
 
-    - run: npm run migrate
+#     - run: npm run migrate
