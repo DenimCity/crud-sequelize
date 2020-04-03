@@ -24,3 +24,4 @@ jobs:
       run: echo "Installing Dependecies"
     - uses: actions/setup-node@v1.1.0
     - run: npm install
+    - run: npm run lint
