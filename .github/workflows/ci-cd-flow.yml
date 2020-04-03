@@ -50,5 +50,5 @@ jobs:
           npm run pretest
       - name: Seed Database
         run: |
-          sh .seed-db.sh
+          sh ./seed-db.sh
         
