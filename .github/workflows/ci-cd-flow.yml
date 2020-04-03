@@ -22,6 +22,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Dependencies
     - run: echo "Installing Dependecies"
+    
     - uses: actions/setup-node@v1.1.0
     - run: npm install
     - name: Check Code Styling
