@@ -15,5 +15,7 @@ jobs:
       NODE_ENV: test
 
     steps:
-    - name: Checkout
+    - name: Cloning Repo
       uses: actions/checkout@v1
+    - name: Install Dependencies
+      run: echo "Installing Dependecies"
