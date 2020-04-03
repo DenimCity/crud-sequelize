@@ -4,17 +4,21 @@
 
 Tasks
 
-- [x] create models with relationssips
+- [X] create models with relationssips
 - [x] logger
 - [x] eslint
 - [x] creating testing environment
 - [x] tests
 - [] add husky pre-commit lint and run tests
-- [] replace travis with github actions
+- [x] replace travis with github actions
 - [] deploy to heroku when a pull request is merged or push to master
-- [] run tests in github actions when branch is pushed
-- [] add code coverage requirements
-- [] in crease code coverage to 100%
+- [x] run tests in github actions when branch is pushed
+- [x] add code coverage requirements
+- [] increase code coverage to 100%
+- [] create a QA and Production environment on heroku
+- [] create live e2e tests for QA environment
+- [] add env variables to both HEROKU environments
+- [] create relese note and version releases
 
 ## Requirements to run locally
 
