@@ -35,8 +35,9 @@ jobs:
       - name: Install
         run: |
           npm install -g npm@latest
+          npm install
           npm run lint
-          npm run start-dev
+#          npm run start-dev
 #     - uses: actions/setup-node@v1.1.0
 #     - run: echo "Installing Dependecies"
 #     - run: npm install
