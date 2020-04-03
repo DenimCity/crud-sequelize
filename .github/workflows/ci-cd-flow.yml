@@ -16,3 +16,7 @@ jobs:
         node-version: [12.x]
     env:
       NODE_ENV: test
+
+    steps:
+    - name: Cloning Repo
+    - uses: actions/checkout@v1
