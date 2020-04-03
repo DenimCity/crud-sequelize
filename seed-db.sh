@@ -1,1 +1,1 @@
-sequelize db:seed:all
+sequelize-cli db:seed:all
