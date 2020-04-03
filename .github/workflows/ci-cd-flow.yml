@@ -27,15 +27,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Set DB Port
       env:
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
-    - name: Install
       run: |
           npm install -g npm@latest
-    - name: Linting
       run: |
         npm run lint
         npm run start-dev
