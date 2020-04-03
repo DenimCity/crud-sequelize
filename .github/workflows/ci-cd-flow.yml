@@ -36,5 +36,3 @@ jobs:
         postgresql password: dev
 
     - run: npm run migrate:reset
-    # - run: knex migrate:latest
-    # - run: yarn test:server
