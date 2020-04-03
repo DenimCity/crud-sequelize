@@ -34,5 +34,3 @@ jobs:
         postgresql db: test_db
         postgresql user: dev
         postgresql password: dev
-
-    - run: npm run migrate:reset
