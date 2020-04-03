@@ -20,5 +20,7 @@ jobs:
     steps:
     - name: Cloning Repo
       uses: actions/checkout@v1
-    - name: Install Dependencies
+    - name: Dependencies
       run: echo "Installing Dependecies"
+    - uses: actions/setup-node@v1.1.0
+    - run: npm install
