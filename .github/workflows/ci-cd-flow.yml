@@ -32,4 +32,6 @@ jobs:
         postgresql version: 11
         postgresql db: test_db 
         postgresql user: default 
-        postgresql password: default 
+        postgresql password: default
+
+    - run: npm run migrate
