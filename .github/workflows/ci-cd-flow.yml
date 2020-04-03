@@ -26,16 +26,17 @@ jobs:
       POSTGRES_HOST: postgres
 
     steps:
-    - uses: actions/checkout@v1
-      env:
-        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+      - uses: actions/setup-node@v1.1.0
+      - name: Set DB Port
+        env:
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         run: |
           echo "::set-env name=POSTGRES_PORT::$POSTGRES_PORT"
-      run: |
+      - name: Install
+        run: |
           npm install -g npm@latest
-      run: |
-        npm run lint
-        npm run start-dev
+          npm run lint
+          npm run start-dev
 #     - uses: actions/setup-node@v1.1.0
 #     - run: echo "Installing Dependecies"
 #     - run: npm install
