@@ -10,7 +10,7 @@
     "migrate:reset": "sequelize-cli db:migrate:undo:all && npm run migrate",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit --coverage",
     "testwatch": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit --watch",
-    "seed": "sequelize-cli db:seed:all",
+    "seed": "cross-env NODE_ENV=test sequelize-cli db:seed:all",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
     "lint": "eslint . --fix"
   },
