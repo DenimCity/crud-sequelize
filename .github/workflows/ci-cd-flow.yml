@@ -25,3 +25,11 @@ jobs:
     - run: npm install
     - run: echo "Check Code Styling"
     - run: npm run lint
+    
+    - name: Setup PostgreSQL
+      uses: Harmon758/postgresql-action@v1.0.0
+      with:
+        postgresql version: latest
+        postgresql db: test_db 
+        postgresql user: default is 
+        postgresql password: default 
