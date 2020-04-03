@@ -28,8 +28,6 @@ jobs:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: jy95
       POSTGRES_DB: sourcecode
-      # use postgres for the host here because we have specified a container for the job.
-      # If we were running the job on the VM this would be localhost
       POSTGRES_HOST: postgres
     steps:
       - uses: actions/checkout@v2
