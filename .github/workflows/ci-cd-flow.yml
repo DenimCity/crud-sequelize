@@ -92,4 +92,13 @@ jobs:
           token: ${{secrets.github_token}}        
       - name: Print new build number
         run: echo "Build number is $BUILD_NUMBER"
+
+    # steps:
+    - name: Get current time
+      uses: gerred/actions/current-time@master
+      id: current-time
+    - name: Use current time
+      env:
+        TIME: "${{ steps.current-time.outputs.time }}"
+      run: echo $TIME
         
