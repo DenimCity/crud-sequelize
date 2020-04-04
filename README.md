@@ -9,7 +9,7 @@ Tasks
 - [x] tests
 - [x] add husky pre-commit lint and run tests
 - [x] replace travis with github actions
-- [] deploy to heroku when a pull request is merged or push to master
+- [X] deploy to heroku when a pull request is merged or push to master
 - [x] run tests in github actions when branch is pushed
 - [x] add code coverage requirements
 - [] increase code coverage to 100%
@@ -20,7 +20,7 @@ Tasks
 - [X] create deploy app instruction
 - [X] create deploy app create and tear down shell scripts
 - [] lock down qa and master
-- [] find out how to version the packagae.json
+- [x] find out how to version the packagae.json
 
 ## Requirements to run locally
 
