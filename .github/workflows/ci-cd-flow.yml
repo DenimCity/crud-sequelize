@@ -61,6 +61,7 @@ jobs:
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
 
     steps:
       - name: Checkout
@@ -76,8 +77,27 @@ jobs:
       - name: Configure Heroku
         run: heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app $HEROKU_APP_NAME-$ENVIRONMENT
 
-      - name: Push to Heroku
-        run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME-$ENVIRONMENT.git $GITHUB_SHA:master
+      # - name: Push to Heroku
+      #   run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME-$ENVIRONMENT.git $GITHUB_SHA:master
+      - name: Deploy to Heroku
+        uses: AkhileshNS/heroku-deploy@v3.0.2
+        with:
+          # This will be used for authentication. You can find it in your heroku homepage account settings
+          heroku_api_key: $HEROKU_API_KEY
+          # Email that you use with heroku
+          heroku_email: HEROKU_EMAIL
+          # The appname to use for deploying/updating
+          heroku_app_name: $HEROKU_APP_NAME-$ENVIRONMENT
+          # An optional buildpack to use when creating the heroku application
+          # buildpack: # optional
+          # # The branch that you would like to deploy to Heroku
+          # branch: # optional, default is HEAD
+          # # Set this to true if you don't want to use --force when switching branches
+          # dontuseforce: # optional
+          # # Will deploy using Dockerfile in project root.
+          # usedocker: # optional
+          # # Set if your app is located in a subdirectory.
+          # appdir: # optional, default is 
 
       - name: Run E2E Tests
         if: github.ref == 'refs/heads/qa'
