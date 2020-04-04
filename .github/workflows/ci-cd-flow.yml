@@ -86,11 +86,11 @@ jobs:
       - name: Build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:push -a HEROKU_APP_NAME-$ENVIRONMENT web 
+        run: heroku container:push -a $HEROKU_APP_NAME-$ENVIRONMENT web 
       - name: Release
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: heroku container:release -a HEROKU_APP_NAME-$ENVIRONMENT web 
+        run: heroku container:release -a $HEROKU_APP_NAME-$ENVIRONMENT web 
 
       - name: Run Database Migrations
         run: heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
