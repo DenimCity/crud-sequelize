@@ -80,8 +80,13 @@ jobs:
         run: printenv
         shell: bash
 
+      - name: Container Logs
+        run: heroku logs --tail --app $HEROKU_APP_NAME-$ENVIRONMENT 
+
       - name: Migrating Database
-        run: heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
+        run: |
+          npm install
+          heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
       
       - name: Running QA Tests
         if: github.ref == 'refs/heads/master'
