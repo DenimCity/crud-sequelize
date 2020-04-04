@@ -93,8 +93,9 @@ jobs:
       #   run: heroku container:release --app desired-app-name-$ENVIRONMENT web 
 
       - name: Run Database Migrations
-        run: heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
-        run: heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
+        run: |
+         heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
+         heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
 
       # - name: Run Database Migrations
       #   run: heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
