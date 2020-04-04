@@ -83,10 +83,10 @@ jobs:
   #       if: github.ref == 'refs/heads/qa'
   #       run: |
   #        heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
-  build:
+  tagging:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate build number
+      - name: Generating Release Tag
         uses: einaregilsson/build-number@v2 
         with:
           token: ${{secrets.github_token}}        
@@ -98,7 +98,7 @@ jobs:
       - name: Use current time
         env:
           TIME: "${{ steps.current-time.outputs.time }}"
-        run: echo $TIME
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: |
+          echo $TIME
+          git tag -a $TIME-$BUILD_NUMBER -m "Release of version $BUILD_NUMBER on $TIME"
+          git push --tags
