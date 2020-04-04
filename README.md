@@ -22,6 +22,9 @@ Tasks
 - [X] fitler out what create a trigger for build actions
 - [X] create deploy app instruction
 - [X] create deploy app create and tear down shell scripts
+- [] lock down qa and master
+- [] find out how to version the packagae.json
+- [] find out how to create github releases
 
 
 

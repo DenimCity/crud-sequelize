@@ -2,11 +2,11 @@ name: Source Code CI/CD
 
 on:
   push:
-    # paths: 
-    #   - '!**.spec.js'
-    #   - '!**.test.js'
-    #   - '!**.md'
-    #   - '!**.yaml'
+    paths: 
+      - '!**.spec.js'
+      - '!**.test.js'
+      - '!**.md'
+      - '!**.yaml'
     branches:
       - master
       - qa
