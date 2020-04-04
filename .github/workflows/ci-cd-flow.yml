@@ -71,7 +71,7 @@ jobs:
 
       - name: Set Production Environment
         if: github.ref == 'refs/heads/master'
-        run: echo "::set-env name=ENVIRONMENT::production"
+        run: echo "::set-env name=ENVIRONMENT::prod"
 
       - name: Configure Heroku
         run: heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app $HEROKU_APP_NAME-$ENVIRONMENT
