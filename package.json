@@ -16,7 +16,7 @@
     "testwatch": "jest --testTimeout=10000 --forceExit --watch",
     "seed": "sequelize-cli db:seed:all",
     "pretest": "npm run migrate:reset",
-    "postinstall": "npm run pretest",
+    "postinstall": "npm run migrate",
     "lint": "eslint . --fix"
   },
   "keywords": [],

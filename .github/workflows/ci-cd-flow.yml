@@ -87,7 +87,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         # if: github.ref == 'refs/heads/dev'
         run: |
-          heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
+          # heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
           heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
 
         
