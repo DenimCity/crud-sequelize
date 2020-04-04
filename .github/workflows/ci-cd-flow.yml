@@ -80,9 +80,6 @@ jobs:
         run: printenv
         shell: bash
 
-      - name: Container Logs
-        run: heroku logs --tail --app $HEROKU_APP_NAME-$ENVIRONMENT 
-
       - name: Migrating Database
         run: |
           npm install
@@ -94,5 +91,8 @@ jobs:
         run: |
           # heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
           heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
+
+      - name: Container Logs
+        run: heroku logs --app $HEROKU_APP_NAME-$ENVIRONMENT 
 
         
