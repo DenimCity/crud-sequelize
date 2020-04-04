@@ -9,16 +9,21 @@ Tasks
 - [x] eslint
 - [x] creating testing environment
 - [x] tests
-- [] add husky pre-commit lint and run tests
+- [x] add husky pre-commit lint and run tests
 - [x] replace travis with github actions
 - [] deploy to heroku when a pull request is merged or push to master
 - [x] run tests in github actions when branch is pushed
 - [x] add code coverage requirements
 - [] increase code coverage to 100%
-- [] create a QA and Production environment on heroku
+- [x] create a QA and Production environment on heroku
 - [] create live e2e tests for QA environment
 - [] add env variables to both HEROKU environments
-- [] create relese note and version releases
+- [] create release note and version releases
+- [X] fitler out what create a trigger for build actions
+- [X] create deploy app instruction
+- [X] create deploy app create and tear down shell scripts
+
+
 
 ## Requirements to run locally
 
@@ -72,7 +77,7 @@ module.exports = {
 - create relations between models in models folder
 - ```sequelize db:migrate```
 - npm i dotenv
-- then: 
+
 
 ```
 sequelize seed:generate --name User
@@ -94,3 +99,36 @@ example commands
  migrate database
  
 ```npx sequelize-cli db:migrate```
+
+## Creating Environments
+
+- Assuming you have Heroku CLI installed
+
+```
+###  Create a Heroku Apps For Produciton and Staging
+NOTE: "desired-app-name" should be a unique name you create
+
+## Creating Environtments
+heroku create desired-app-name-qa --buildpack heroku/nodejs --remote staging
+heroku create desired-app-name-prod --buildpack heroku/nodejs --remote production
+
+## Setting Env Variables for Environments
+heroku config:set NPM_CONFIG_PRODUCTION=false YARN_PRODUCTION=false NODE_ENV=test --app desired-app-name-qa
+heroku config:set NPM_CONFIG_PRODUCTION=true YARN_PRODUCTION=true NODE_ENV=production --app desired-app-name-prod
+
+heroku addons:create heroku-postgresql
+## ADDING DATABASE
+heroku addons:create heroku-postgresql --app desired-app-name-qa
+heroku addons:create heroku-postgresql --app desired-app-name-prod
+
+ ```
+
+### Migrating Database to New Database
+
+- BackUp Database
+
+```heroku pg:backups:capture -a "your app name"```
+
+- Download Data Dump
+
+```heroku pg:backups:download -a "your app name"```
