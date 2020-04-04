@@ -1,7 +1,5 @@
 # Crud-Sequelize
 
-[![Coverage Status](https://coveralls.io/repos/github/DenimCity/crud-sequelize/badge.svg?branch=master)](https://coveralls.io/github/DenimCity/crud-sequelize?branch=master)
-
 Tasks
 
 - [X] create models with relationssips
@@ -17,16 +15,12 @@ Tasks
 - [] increase code coverage to 100%
 - [x] create a QA and Production environment on heroku
 - [] create live e2e tests for QA environment
-- [] add env variables to both HEROKU environments
 - [] create release note and version releases
 - [X] fitler out what create a trigger for build actions
 - [X] create deploy app instruction
 - [X] create deploy app create and tear down shell scripts
 - [] lock down qa and master
 - [] find out how to version the packagae.json
-- [] find out how to create github releases
-
-
 
 ## Requirements to run locally
 
