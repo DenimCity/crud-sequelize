@@ -75,8 +75,8 @@ jobs:
 
       - name: Configure Heroku
         run: | 
-        heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app $HEROKU_APP_NAME-$ENVIRONMENT
-        heroku config --app $HEROKU_APP_NAME-$ENVIRONMENT
+          heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app $HEROKU_APP_NAME-$ENVIRONMENT
+          heroku config --app $HEROKU_APP_NAME-$ENVIRONMENT
       
       # - name: Migrating Database
       #   run: |
