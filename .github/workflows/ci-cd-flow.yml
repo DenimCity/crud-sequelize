@@ -76,8 +76,21 @@ jobs:
       - name: Configure Heroku
         run: heroku config:set GIT_HASH=${GITHUB_SHA} GIT_BRANCH=${GITHUB_REF} --app $HEROKU_APP_NAME-$ENVIRONMENT
 
-      - name: Push to Heroku
-        run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME-$ENVIRONMENT.git $GITHUB_SHA:master
+      # - name: Push to Heroku
+      #   run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME-$ENVIRONMENT.git $GITHUB_SHA:master
+
+      - name: Login to Heroku Container registry
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login 
+      - name: Build and push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:push -a HEROKU_APP_NAME-$ENVIRONMENT web 
+      - name: Release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:release -a HEROKU_APP_NAME-$ENVIRONMENT web 
 
       - name: Run Database Migrations
         run: heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
