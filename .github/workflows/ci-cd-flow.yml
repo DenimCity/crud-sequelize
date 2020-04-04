@@ -74,7 +74,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: echo "::set-env name=ENVIRONMENT::prod"
 
-      name: Deployment Environment
+      - name: Deployment Environment
         run: echo "Deploying to $ENVIRONMENT environemnt"
 
       - name: Configure Heroku
