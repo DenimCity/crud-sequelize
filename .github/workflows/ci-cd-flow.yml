@@ -61,7 +61,6 @@ jobs:
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-      NODE_ENV: $ENVIRONMENT
 
     steps:
       - name: Checkout
@@ -80,6 +79,8 @@ jobs:
           heroku config --app $HEROKU_APP_NAME-$ENVIRONMENT
       
       - name: Migrating Database
+        env:
+          NODE_ENV: $ENVIRONMENT
         run: |
           npm install
           heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
