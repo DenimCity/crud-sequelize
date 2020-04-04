@@ -80,7 +80,7 @@ jobs:
         run: git push --force https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME-$ENVIRONMENT.git $GITHUB_SHA:master
 
       - name: Run E2E Tests
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/dev'
         run: |
          heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
         
