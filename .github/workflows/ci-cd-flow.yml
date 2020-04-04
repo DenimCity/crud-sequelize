@@ -84,12 +84,12 @@ jobs:
         run: |
          heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
   build:
-  runs-on: ubuntu-latest
-  steps:
-  - name: Generate build number
-    uses: einaregilsson/build-number@v2 
-    with:
-      token: ${{secrets.github_token}}        
-  - name: Print new build number
-    run: echo "Build number is $BUILD_NUMBER"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate build number
+        uses: einaregilsson/build-number@v2 
+        with:
+          token: ${{secrets.github_token}}        
+      - name: Print new build number
+        run: echo "Build number is $BUILD_NUMBER"
         
