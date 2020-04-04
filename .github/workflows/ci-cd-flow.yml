@@ -2,7 +2,7 @@ name: Source Code CI/CD
 
 on:
   push:
-    paths: 
+#     paths: 
       # - '!**.spec.js'
       # - '!**.test.js'
       # - '!**.md'
@@ -99,7 +99,6 @@ jobs:
         env:
           TIME: "${{ steps.current-time.outputs.time }}"
         run: echo $TIME
-        steps:
       - name: Get current date
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
