@@ -14,7 +14,7 @@
     "migrate:reset": "sequelize-cli db:migrate:undo:all && npm run migrate",
     "test": "jest --testTimeout=10000 --forceExit --coverage",
     "testwatch": "jest --testTimeout=10000 --forceExit --watch",
-    "seed": " sequelize-cli db:seed:all",
+    "seed": "sequelize-cli db:seed:all",
     "pretest": "npm run migrate:reset",
     "postinstall": "npm run pretest",
     "lint": "eslint . --fix"
