@@ -86,8 +86,8 @@ jobs:
           heroku run migrate --app $HEROKU_APP_NAME-$ENVIRONMENT
       
       - name: Running QA Tests
-        if: github.ref == 'refs/heads/master'
-        # if: github.ref == 'refs/heads/dev'
+        # if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/dev'
         run: |
           # heroku run npm i --app $HEROKU_APP_NAME-$ENVIRONMENT
           heroku run npm test --app $HEROKU_APP_NAME-$ENVIRONMENT
