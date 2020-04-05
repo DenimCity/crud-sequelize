@@ -12,8 +12,8 @@
     "start-dev": "nodemon index.js",
     "migrate": "sequelize-cli db:migrate",
     "migrate:reset": "sequelize-cli db:migrate:undo:all && npm run migrate",
-    "test": "jest --testTimeout=10000 --forceExit --coverage",
-    "testwatch": "jest --testTimeout=10000 --forceExit --watch",
+    "test": "jest --forceExit --coverage --coverageDirectory=coverage",
+    "test:watch": "jest --testTimeout=10000 --forceExit --watch",
     "seed": "sequelize-cli db:seed:all",
     "pretest": "npm run migrate:reset",
     "postinstall": "npm run migrate",
@@ -40,6 +40,7 @@
     "eslint-plugin-import": "^2.20.2",
     "husky": "^4.2.3",
     "jest": "^25.2.4",
+    "jest-runner-eslint": "^0.7.6",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"
   },
@@ -53,6 +54,10 @@
     }
   },
   "jest": {
+    "watchPlugins": ["jest-runner-eslint/watch-fix"],
+    "coverageReporters": [
+      "html"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 30,
@@ -60,6 +65,22 @@
         "lines": 30,
         "statements": 30
       }
-    }
+    },
+    "projects": [
+      {
+        "displayName": "jest-test"
+      },
+      {
+        "displayName": "lint-test",
+        "runner": "jest-runner-eslint",
+        "testMatch": [
+          "<rootDir>/**/*.js"
+        ]
+      }
+    ]
+  },
+  "cliOptions": {
+    "fix": true,
+    "ext": [".jsx", ".ts"]
   }
 }
