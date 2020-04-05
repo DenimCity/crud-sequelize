@@ -12,7 +12,7 @@
     "start-dev": "nodemon index.js",
     "migrate": "sequelize-cli db:migrate",
     "migrate:reset": "sequelize-cli db:migrate:undo:all && npm run migrate",
-    "test": "jest --forceExit --coverage --coverageDirectory=coverage",
+    "test": "jest --forceExit --coverage --verbose --coverageDirectory=coverage",
     "test:watch": "jest --testTimeout=10000 --forceExit --watch",
     "seed": "sequelize-cli db:seed:all",
     "pretest": "npm run migrate:reset",
@@ -81,6 +81,9 @@
   },
   "cliOptions": {
     "fix": true,
-    "ext": [".jsx", ".ts"]
+    "ext": [".js", ".ts"],
+    "ignorePattern": [
+      "*.test.js"
+    ]
   }
 }
